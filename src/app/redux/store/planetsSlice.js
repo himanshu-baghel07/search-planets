@@ -24,5 +24,5 @@ const planetSlice = createSlice({
   },
 });
 
-export const { setPlanets, setFilters, searchText } = planetSlice.actions;
+export const { setPlanets, setFilters, setSearchText } = planetSlice.actions;
 export default planetSlice.reducer;
