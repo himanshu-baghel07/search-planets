@@ -6,22 +6,16 @@ import { URI } from "../constants/apiEndpoints";
  @params (object) - An object containing query parameters to be passed to the API
 */
 
-export const fetchPlanets = async (params) => {
-  const response = await axios.get(URI.PLANETS, { params });
-  return response.data;
+const fetchData = async (url, params) => {
+  try {
+    const response = await axios.get(url, { params });
+    return response.data;
+  } catch (error) {
+    return { error }; // Return the error object
+  }
 };
 
-export const fetchColors = async (params) => {
-  const response = await axios.get(URI.COLORS, { params });
-  return response.data;
-};
-
-export const fetchShapes = async (params) => {
-  const response = await axios.get(URI.SHAPES, { params });
-  return response.data;
-};
-
-export const fetchSizes = async (params) => {
-  const response = await axios.get(URI.SIZES, { params });
-  return response.data;
-};
+export const fetchPlanets = (params) => fetchData(URI.PLANETS, params);
+export const fetchColors = (params) => fetchData(URI.COLORS, params);
+export const fetchShapes = (params) => fetchData(URI.SHAPES, params);
+export const fetchSizes = (params) => fetchData(URI.SIZES, params);
