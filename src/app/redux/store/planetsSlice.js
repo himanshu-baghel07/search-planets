@@ -9,6 +9,12 @@ const planetSlice = createSlice({
       shape: [],
       size: [],
     },
+    description: {
+      color: {},
+      shape: {},
+      size: {},
+    },
+
     searchText: "",
   },
   reducers: {
@@ -21,8 +27,12 @@ const planetSlice = createSlice({
     setSearchText(state, action) {
       state.searchText = action.payload;
     },
+    setDescription(state, action) {
+      state.description = action.payload;
+    },
   },
 });
 
-export const { setPlanets, setFilters, setSearchText } = planetSlice.actions;
+export const { setPlanets, setFilters, setSearchText, setDescription } =
+  planetSlice.actions;
 export default planetSlice.reducer;
