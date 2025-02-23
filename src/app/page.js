@@ -172,8 +172,8 @@ export default function HomePage() {
         {/* Main content area to display planets or loading state */}
         <Col xs={24} md={20} lg={21} className="md:border-l border-gray-200">
           {loading ? (
-            <div className="flex justify-center items-center h-80 sm:h-10">
-              <span className="loader"></span>
+            <div className="flex justify-center items-center h-full relative">
+              <span className="loader absolute top-2"></span>
             </div>
           ) : (
             // Display planets or a message if no planets are found
