@@ -152,7 +152,7 @@ function HomePageContent() {
             width={30}
             style={{ backgroundColor: "#f5f5f5", borderRadius: "50px" }}
           />{" "}
-          Planet Explorer
+          &nbsp;Planet Explorer
         </h2>
         {/* SearchBar component for searching planets */}
         <SearchBar
