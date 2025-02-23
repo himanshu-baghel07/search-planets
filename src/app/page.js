@@ -1,11 +1,10 @@
 "use client";
-
 import SearchBar from "./components/SearchBar";
 import { Col, Row, Spin, Typography } from "antd";
 import Filters from "./components/Filters";
 import { useDispatch, useSelector } from "react-redux";
 import PlanetCard from "./components/PlanetCard";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { fetchPlanets } from "./services/api";
 import {
   setFilters,
@@ -14,7 +13,7 @@ import {
 } from "./redux/store/planetsSlice";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export default function HomePage() {
+function HomePageContent() {
   // Extract state from Redux store
   const { planets, filters, searchText, description } = useSelector(
     (state) => state.planets
@@ -196,5 +195,13 @@ export default function HomePage() {
         </Col>
       </Row>
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePageContent />
+    </Suspense>
   );
 }
