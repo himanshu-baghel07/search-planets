@@ -24,7 +24,7 @@ function HomePageContent() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  // Function to fetch planets data based on parameters
+  // Function to fetch planets data based on parameters.
   const fetchData = async (paramsOverride = null) => {
     setLoading(true);
     try {
