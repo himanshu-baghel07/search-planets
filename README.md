@@ -2,6 +2,9 @@
 
 A web application to search and filter planets.
 
+![Planet Image](https://i.postimg.cc/t4QTVYLB/1.png)
+![Planet Image](https://i.postimg.cc/YC614cym/2.png)
+![Planet Image](https://i.postimg.cc/xjm7s8kr/5.jpg)
 
 ## Features
 
@@ -66,4 +69,5 @@ Before you begin, ensure you have the following installed:
    ```bash
    yarn start
    ```
-   
+
+   ## Thank you
