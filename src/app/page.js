@@ -126,16 +126,44 @@ export default function HomePage() {
     dispatch(setFilters({ ...filters, [filterType]: values })); // Update Redux state with new filters
   };
 
+  // Function to reset filters and search text
+  const resetFiltersAndSearch = async () => {
+    // Reset Redux state
+    dispatch(setSearchText(""));
+    dispatch(setFilters({ color: [], shape: [], size: [] }));
+
+    // Clear URL parameters
+    router.push(pathname);
+
+    // Fetch data without any filters
+    await fetchData({});
+  };
+
   return (
     <div className="container animate-fade-in">
-      <h2 className=" text-2xl mb-8">Planet Explorer</h2>
-      {/* SearchBar component for searching planets */}
-      <SearchBar
-        value={searchText}
-        onSearch={handleSearch}
-        onChange={handleInputChange}
-      />
-      <Row gutter={32}>
+      <div className="border bg-[url('/nav_bg_image.jpg')] bg-cover bg-center bg-no-repeat p-2 rounded-md border-blue-950 mb-3">
+        <h2
+          className=" text-3xl cursor-pointer flex justify-center items-center font-bold mb-8 text-slate-200 drop-shadow-[red]"
+          onClick={resetFiltersAndSearch}
+        >
+          <img
+            src="./solar_system_icon.svg"
+            alt="solar system"
+            height={30}
+            width={30}
+            style={{ backgroundColor: "#f5f5f5", borderRadius: "50px" }}
+          />{" "}
+          Planet Explorer
+        </h2>
+        {/* SearchBar component for searching planets */}
+        <SearchBar
+          value={searchText}
+          onSearch={handleSearch}
+          onChange={handleInputChange}
+        />
+      </div>
+
+      <Row gutter={32} className="p-1">
         <Col xs={24} md={4} lg={3}>
           {/* Filters component for filtering planets */}
           <Filters filters={filters} onChange={handleFilterChange} />
@@ -144,8 +172,8 @@ export default function HomePage() {
         {/* Main content area to display planets or loading state */}
         <Col xs={24} md={20} lg={21} className="md:border-l border-gray-200">
           {loading ? (
-            <div className="flex justify-center items-center h-64">
-              <Spin size="large" />
+            <div className="flex justify-center items-center h-80 sm:h-10">
+              <span className="loader"></span>
             </div>
           ) : (
             // Display planets or a message if no planets are found

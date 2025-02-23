@@ -83,9 +83,11 @@ const Filters = ({ filters, onChange }) => {
     {
       key: "1",
       label: "Filters",
+
       children: (
-        <Space direction="vertical" className="w-full" size="large">
+        <Space direction="vertical" className="w-full " size="large">
           {/* Color Filter */}
+
           <div>
             <Text strong className="text-xl mb-2 block">
               Color
@@ -152,14 +154,15 @@ const Filters = ({ filters, onChange }) => {
   }, []);
 
   return loading ? (
-    <div className="sticky top-4 w-full flex justify-center items-center transition-opacity duration-300">
-      <Spin size="large" />
+    <div className="hidden sm:flex sticky top-4 w-full  justify-center items-center transition-opacity duration-300">
+      <span className="loader"></span>
     </div>
   ) : (
     <>
       {/* Desktop View */}
       <div className="hidden md:block sticky top-4 fade-in">
-        <Title level={4} className="mb-4">
+        <Title level={4} className="mb-4 flex justify-start gap-1 items-center">
+          <img src="/filter_icon.svg" alt="filter " height={20} width={20} />
           Filters
         </Title>
         <Space direction="vertical" className="w-auto" size="large">
@@ -217,7 +220,7 @@ const Filters = ({ filters, onChange }) => {
       </div>
 
       {/* Mobile/Tablet View */}
-      <div className="block md:hidden mb-2">
+      <div className="block md:hidden mb-2 mx-1  bg-slate-100 ">
         <Collapse items={collapseItems} defaultActiveKey={[]} />
       </div>
     </>
