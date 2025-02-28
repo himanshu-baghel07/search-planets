@@ -35,9 +35,15 @@ const Filters = ({ filters, onChange }) => {
 
     try {
       // Fetch all data concurrently
-      const colorsData = await fetchColors();
-      const shapesData = await fetchShapes();
-      const sizesData = await fetchSizes();
+      // const colorsData = await fetchColors();
+      // const shapesData = await fetchShapes();
+      // const sizesData = await fetchSizes();
+
+      const [colorsData, shapesData, sizesData] = await Promise.all([
+        fetchColors(),
+        fetchShapes(),
+        fetchSizes(),
+      ]);
 
       // Check if any of the API calls failed
       if (colorsData.error || shapesData.error || sizesData.error) {
